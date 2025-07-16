@@ -1,8 +1,13 @@
+
 ---
 
-#🚴‍♂️ Cycle Track
+# 🚴‍♂️ Cycle Track
 
-**Cycle Track** is a modern, feature-rich Android app for tracking your cycling adventures, built with the latest Android technologies and Jetpack Compose UI.
+[![Android](https://img.shields.io/badge/platform-Android-green?style=flat-square&logo=android)](https://developer.android.com/)
+[![Kotlin](https://img.shields.io/badge/language-Kotlin-blue?style=flat-square&logo=kotlin)](https://kotlinlang.org/)
+[![License](https://img.shields.io/github/license/koustav24/Cycle-Track?style=flat-square)](LICENSE)
+
+> **Cycle Track** is a modern, feature-rich Android app for tracking your cycling adventures, built with the latest Android technologies and Jetpack Compose UI.
 
 ---
 
