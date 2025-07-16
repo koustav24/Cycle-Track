@@ -2,8 +2,7 @@
 
 # 🚴‍♂️ Cycle Track
 
-
-> **Cycle Track** is a modern, feature-rich Android app for tracking your cycling adventures, built with the latest Android technologies and Jetpack Compose UI.
+**Cycle Track** is a modern, feature-rich Android app for tracking your cycling adventures, built with the latest Android technologies and Jetpack Compose UI.
 
 ---
 
