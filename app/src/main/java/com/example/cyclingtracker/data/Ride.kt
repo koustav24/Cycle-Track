@@ -11,5 +11,6 @@ data class Ride(
     val timestamp: Long = System.currentTimeMillis(),
     val durationInMillis: Long,
     val distanceInMeters: Float,
-    val path: List<LatLng>
+    val path: List<LatLng>,
+    val caloriesBurned: Float = 0f // Added calories
 )

@@ -6,6 +6,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
     id("org.jetbrains.kotlin.plugin.compose")
+    id("androidx.room")
 }
 
 android {
@@ -20,7 +21,10 @@ android {
                 localProperties.load(fis)
             }
         }
+        // Read API keys from local.properties
         buildConfigField("String", "MAPS_API_KEY", "\"${localProperties.getProperty("MAPS_API_KEY")}\"")
+        buildConfigField("String", "AQI_API_KEY", "\"${localProperties.getProperty("AQI_API_KEY")}\"")
+        manifestPlaceholders["MAPS_API_KEY"] = localProperties.getProperty("MAPS_API_KEY")
         applicationId = "com.example.cyclingtracker"
         minSdk = 24
         targetSdk = 36
@@ -54,6 +58,10 @@ android {
     }
 }
 
+room {
+    schemaDirectory("$projectDir/schemas")
+}
+
 dependencies {
 
     // Core Android & Jetpack Compose
@@ -65,10 +73,14 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation("androidx.compose.material:material-icons-extended:1.6.7") // For icons / Google Maps & Location Service
+    implementation("androidx.compose.material:material-icons-extended:1.6.7") // For icons
+    // Google Maps & Location Service
     implementation("com.google.maps.android:maps-compose:4.3.3")
     implementation("com.google.android.gms:play-services-maps:19.2.0")
     implementation("com.google.android.gms:play-services-location:21.3.0")
+    implementation("com.google.maps:google-maps-services:2.2.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1") // For awaiting Tasks
+    implementation("com.google.android.libraries.places:places:3.5.0")
 
     // Room Database for local storage
     implementation("androidx.room:room-runtime:2.8.3")
@@ -77,6 +89,10 @@ dependencies {
 
     // Gson for Type Converters (to store the LatLng list)
     implementation("com.google.code.gson:gson:2.13.2")
+
+    // Retrofit for networking (AQI)
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
